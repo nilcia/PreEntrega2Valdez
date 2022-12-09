@@ -3,9 +3,9 @@ import './App.css';
 import NavbarMenu from './components/Navbar/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './Routes/Home/Home';
-import SuculentId from './Routes/SuculentId/SuculentId';
-import Suculents from './Routes/Suculents/Suculents';
+import Home from './routes/Home/Home';
+import SuculentId from './routes/SuculentId/SuculentId';
+import Suculents from './routes/Suculents/Suculents';
 
 
 export default function App() {
