@@ -1,8 +1,8 @@
 import ItemCount from "./ItemCount";
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
-import './itemDetail.css';
 import { Link } from 'react-router-dom';
+import './itemDetail.css'
 
 const sucu = require.context("../../image", true);
 const ItemDetail = ({ item }) => {
@@ -10,7 +10,7 @@ const ItemDetail = ({ item }) => {
   console.log(item)
     return (
       // <Link to={`/item/${item.id}`}>
-      <div class="d-flex justify-content-center">
+      <div class="d-flex justify-content-center card-shadow">
         <Card border="secondary" className="text-center" style={{ width: '20rem' }}>
           <Card.Img variant="top" src={sucu(`./${item.image}`)} />
           <Card.Body>

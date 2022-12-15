@@ -8,9 +8,10 @@ const sucu = require.context("../../image", true);
 const Item = ({ item }) => {
     return (
         <Link to={`/item/${item.id}`}>
-            <Col>
-                <Card border="secondary">
-                    <Card.Img variant="bottom" className="image-container" src={sucu(`./${item.image}`)} />
+            
+            <Col >
+                <Card border="secondary" className="d-flex justify-content-center">
+                    <Card.Img variant="bottom"  className="image-container" src={sucu(`./${item.image}`)} />
                     <Card.Body>
                         <Card.Title>{item.name} </Card.Title>
                         <Button variant="secondary" size="sm">Ver Detalle</Button>

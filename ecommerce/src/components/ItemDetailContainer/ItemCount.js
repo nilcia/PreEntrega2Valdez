@@ -36,13 +36,13 @@ const ItemCount = ({stock}) => {
         <Col>
         <p>
         <DashCircle
-            color="red"
+            color="#212529"
             size={20}
             onClick={buttonReducesCount}
         />
         &nbsp;&nbsp;{contador}&nbsp;&nbsp;   
         <PlusCircle
-            color="green"
+            color="#212529"
             size={20}
             onClick={buttonIncreaseCount}
         />
