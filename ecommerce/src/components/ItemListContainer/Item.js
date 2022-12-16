@@ -7,14 +7,16 @@ import { Link } from 'react-router-dom';
 const sucu = require.context("../../image", true);
 const Item = ({ item }) => {
     return (
-        <Link to={`/item/${item.id}`}>
+        <Link to={`/item/${item.id}`} style={{textDecoration:"none"}}>
             
-            <Col >
-                <Card border="secondary" className="d-flex justify-content-center">
+            <Col  md="auto">
+                <Card border="secondary" className="d-flex justify-content-center card-container">
                     <Card.Img variant="bottom"  className="image-container" src={sucu(`./${item.image}`)} />
                     <Card.Body>
-                        <Card.Title>{item.name} </Card.Title>
-                        <Button variant="secondary" size="sm">Ver Detalle</Button>
+                        <p style={{color:"#28B463"}} className='card-name'>{item.name} 
+                        <br/><strong>GS. {item.price} </strong></p>
+                        
+                        {/* <Button variant="secondary" size="sm">Ver Detalle</Button> */}
                     </Card.Body>
                 </Card>
             </Col>

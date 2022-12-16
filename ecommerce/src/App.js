@@ -12,7 +12,6 @@ export default function App() {
   return (
     <BrowserRouter>
       <NavbarMenu />
-      <br/>
       {/* <ItemListContainer greeting="Hola, haz comprado suculentas!" /> */}
       <Routes>
         <Route exact path="/" element={<Home />} />

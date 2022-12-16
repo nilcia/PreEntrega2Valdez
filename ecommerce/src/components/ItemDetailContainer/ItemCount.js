@@ -21,7 +21,7 @@ const ItemCount = ({stock}) => {
   };
 
   const buttonOnAdd = () => {
-    if(contador!=0){
+    if(contador!==0){
       console.log("Agregó la cantidad de items: " + contador);
     }
     
