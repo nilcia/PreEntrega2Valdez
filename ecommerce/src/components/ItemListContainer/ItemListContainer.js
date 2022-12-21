@@ -1,26 +1,34 @@
 import ItemList from './ItemList';
-import { itemsResults } from './constants';
 import { useState, useEffect } from 'react';
-
-const promesa = new Promise((resolve)=>{
-    setTimeout(()=>{
-        resolve(itemsResults)
-    }, 2000)
-})
+import { getFirestore, collection, getDocs } from 'firebase/firestore';
 
 const ItemListContainer = () => {
     const [items, setItems] = useState([]);
-    
+
     useEffect(() => {
-        promesa.then((res)=>{
-            console.log("res" + res);
-            setItems(res);
-            console.log("items" + items);
+        const db = getFirestore();
+        const itemsCollection = collection(db, 'items');
+
+        getDocs(itemsCollection).then((snapshot) => {
+            const items = snapshot.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data(),
+            }));
+            setItems(items);
         });
-    }, [items]);
+    }, []);
 
     return (
-        <ItemList items={items} />
+        <div>
+            {items.length === 0 ? (
+                <div>Cargando...</div>
+            ) : (
+                <div>
+                    <ItemList items={items} />
+                </div>
+            )}
+        </div>
+
     );
 };
 
