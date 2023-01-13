@@ -3,7 +3,6 @@ import ItemDetailContainer from '../../components/ItemDetailContainer/ItemDetail
 
 const SuculentId = () => {
   const { id } = useParams();
-  console.log("Planta: " + id)
   return (
     <ItemDetailContainer id={id}/>
   );

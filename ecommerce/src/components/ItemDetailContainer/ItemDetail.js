@@ -16,7 +16,6 @@ const ItemDetail = ({ item }) => {
   useEffect(() => {
     let id = item.id;
     let filterItem = cartItem.filter(item => item.id === id);
-    console.log("filterItem " + filterItem);
     setIsInCart(filterItem.length > 0);
   }, [item.id]);
 

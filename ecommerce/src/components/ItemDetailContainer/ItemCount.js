@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { PlusCircle, DashCircle } from 'react-bootstrap-icons';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -9,9 +9,7 @@ import { Link } from 'react-router-dom';
 const ItemCount = ({ onClick, stock, isInCart }) => {
   const [contador, setContador] = useState(0);
 
-  console.log('isInCart ' + isInCart);
   const onAdd = () => {
-    console.log('launch ' + contador);
     onClick(contador);
   };
 
@@ -26,10 +24,6 @@ const ItemCount = ({ onClick, stock, isInCart }) => {
       setContador(contador - 1);
     }
   };
-
-  useEffect(() => {
-    console.log('el estado contador cambió');
-  }, [contador]);
 
   return (
     <Container>

@@ -3,7 +3,6 @@ import CategoryContainer from '../../components/CategoryContainer/CategoryContai
 
 const Suculents = () => {
   const { id } = useParams();
-  console.log("Suculents: " + id)
   return (
     <CategoryContainer id={id}/>
   );

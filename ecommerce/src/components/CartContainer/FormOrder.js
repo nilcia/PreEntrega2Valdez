@@ -3,6 +3,8 @@ import { getFirestore, collection, addDoc } from 'firebase/firestore';
 import { CartContext } from '../../context/CartContext';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Alert from 'react-bootstrap/Alert';
+
 
 const FormOrder = () => {
 
@@ -14,7 +16,7 @@ const FormOrder = () => {
     total: 0
   });
 
-  const [buyer, setBuyer] = useState({
+  const [buyerObj, setBuyerObj] = useState({
     name: '',
     email: '',
     phone: '',
@@ -22,7 +24,6 @@ const FormOrder = () => {
 
   const submitHandler = (ev) => {
     ev.preventDefault();
-
     const db = getFirestore();
     const formsCollection = collection(db, 'forms');
 
@@ -34,60 +35,72 @@ const FormOrder = () => {
       });
       setFormId(snapshot.id);
     });
+
   };
 
+  const validateForm = () => {
+    if
+      ((buyerObj.name === "") ||
+      (buyerObj.phone === "") ||
+      (buyerObj.email === "")) {
+      return true;
+    } else {
+      return false;
+    }
+  };
   const changeHandler = (ev) => {
-    const { value, name } = ev.target;
-    console.log(ev);
-    setBuyer({ ...buyer, [name]: value });
+    const field = ev.target.name;
+    const value = ev.target.value;
+
+    const buyerObjTmp = {
+      ...buyerObj,
+      [field]: value,
+    }
+    setBuyerObj(buyerObjTmp);
     const order = {
-      buyer: buyer,
+      buyer: buyerObjTmp,
       items: cartItem,
       total: totalMount
     }
-    console.log("Buyer");
-    console.log(buyer);
     setForm(order);
-    console.log("order");
-    console.log(order);
   };
 
   return (
-    
-        <Form onSubmit={submitHandler}>
-          <h1>Datos del comprador</h1>
-          <Form.Group className="mb-3">
-            <Form.Label >Nombre y Apellido</Form.Label>
-            <Form.Control 
-            placeholder="Ingrese Nombre y Apellido"
-            name="name"
-            id="name"
-            value={buyer.name} 
-            onChange={changeHandler}/>
-          </Form.Group>
-          <Form.Group className="mb-3" >
-            <Form.Label>Correo electronico</Form.Label>
-            <Form.Control 
-            type="email" 
-            name="email"
-            id="email"
-            placeholder="Ingrese email" 
-            value={buyer.email} 
-            onChange={changeHandler}/>
-          </Form.Group>
-          <Form.Group className="mb-3" >
-            <Form.Label>Telefono</Form.Label>
-            <Form.Control 
-            placeholder="Ingrese Telefono" 
-            value={buyer.phone} 
-            name="phone"
-            id="phone"
-            onChange={changeHandler}/>
-          </Form.Group>
-          <Button variant="primary" type="submit">
-            Realizar Pedido
-          </Button>
-        </Form>
+
+    <Form onSubmit={submitHandler}>
+      <h1>Datos del comprador</h1>
+      <Form.Group className="mb-3">
+        <Form.Label >Nombre y Apellido *Requerido</Form.Label>
+        <Form.Control
+          placeholder="Ingrese Nombre y Apellido"
+          name="name"
+          id="name"
+          value={buyerObj.name}
+          onChange={changeHandler} />
+      </Form.Group>
+      <Form.Group className="mb-3" >
+        <Form.Label>Correo electronico *Requerido</Form.Label>
+        <Form.Control
+          type="email"
+          name="email"
+          id="email"
+          placeholder="Ingrese email"
+          value={buyerObj.email}
+          onChange={changeHandler} />
+      </Form.Group>
+      <Form.Group className="mb-3" >
+        <Form.Label>Telefono *Requerido</Form.Label>
+        <Form.Control
+          placeholder="Ingrese Telefono"
+          value={buyerObj.phone}
+          name="phone"
+          id="phone"
+          onChange={changeHandler} />
+      </Form.Group>
+      <Button variant="primary" type="submit" disabled={validateForm()}>
+        Realizar Pedido
+      </Button>
+    </Form>
   );
 
 }
