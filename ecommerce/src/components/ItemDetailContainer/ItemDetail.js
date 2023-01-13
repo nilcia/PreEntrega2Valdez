@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import ItemCount from "./ItemCount";
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
@@ -6,13 +7,29 @@ import Container from "react-bootstrap/Container";
 import './itemDetail.css'
 
 const sucu = require.context("../../image", true);
+
 const ItemDetail = ({ item }) => {
+
+  const [addItem, setAddItem] = useState(0);
+  let x = 0;
+
+  const buttonOnAdd = (contador) => {
+      if (contador > 0) {
+        console.log("Add1: " + addItem);
+
+
+        setAddItem(contador);
+        console.log("Add1: " + addItem);
+        console.log("Addcontador: " + contador);
+        setAddItem(5);
+
+        console.log("Add: " + addItem);
+      }
+  };
   console.log("Entra a ItemDetail")
   console.log(item)
   return (
-    // <Link to={`/item/${item.id}`}>
-    // <div class="d-flex justify-content-center card-shadow">
-    <Container class="d-flex justify-content-center card-shadow">
+    <Container className="d-flex justify-content-center card-shadow">
       <Row className="justify-content-md-center">
 
         <Col md="auto">
@@ -26,7 +43,7 @@ const ItemDetail = ({ item }) => {
                 <strong>Precio: GS.{item.price} </strong>
               </Card.Text>
 
-              <ItemCount stock={item.stock} />
+              <ItemCount stock={item.stock} onClick={buttonOnAdd} />
             </Card.Body>
           </Card>
         </Col>

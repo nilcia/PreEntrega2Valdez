@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './routes/Home/Home';
 import SuculentId from './routes/SuculentId/SuculentId';
 import Suculents from './routes/Suculents/Suculents';
+import Cart from './routes/Cart/Cart';
 
 
 export default function App() {
@@ -17,6 +18,7 @@ export default function App() {
         <Route exact path="/" element={<Home />} />
         <Route exact path="/category/:id" element={<Suculents />} />
         <Route exact path="/item/:id" element={<SuculentId />} />
+        <Route exact path="/cart" element={<Cart />} />
       </Routes>
     </BrowserRouter>
   );

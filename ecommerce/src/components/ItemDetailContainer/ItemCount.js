@@ -4,28 +4,28 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/esm/Button';
+import { Link } from 'react-router-dom';
 
-const ItemCount = ({stock}) => {
+const ItemCount = ({ onClick, stock }) => {
   const [contador, setContador] = useState(0);
 
+  const onAdd = () => {
+    console.log('launch ' + contador);
+    onClick(contador);
+  };
+
   const buttonIncreaseCount = () => {
-    if(contador<stock){
+    if (contador < stock) {
       setContador(contador + 1);
     }
   };
 
   const buttonReducesCount = () => {
-    if(contador > 0){
-        setContador(contador - 1);
+    if (contador > 0) {
+      setContador(contador - 1);
     }
   };
 
-  const buttonOnAdd = () => {
-    if(contador!==0){
-      console.log("Agregó la cantidad de items: " + contador);
-    }
-    
-  };
   useEffect(() => {
     console.log('el estado contador cambió');
   }, [contador]);
@@ -34,24 +34,28 @@ const ItemCount = ({stock}) => {
     <Container>
       <Row>
         <Col>
-        <p>
-        <DashCircle
-            color="#212529"
-            size={20}
-            onClick={buttonReducesCount}
-        />
-        &nbsp;&nbsp;{contador}&nbsp;&nbsp;   
-        <PlusCircle
-            color="#212529"
-            size={20}
-            onClick={buttonIncreaseCount}
-        />
-       </p>
+          <p>
+            <DashCircle
+              color="#212529"
+              size={20}
+              onClick={buttonReducesCount}
+            />
+            &nbsp;&nbsp;{contador}&nbsp;&nbsp;
+            <PlusCircle
+              color="#212529"
+              size={20}
+              onClick={buttonIncreaseCount}
+            />
+          </p>
         </Col>
-        <Col><Button variant="dark" onClick={buttonOnAdd}>Agregar</Button></Col>
+        <Col>
+          <Link to={`/cart`} style={{ textDecoration: "none" }}>
+            <Button variant="dark" onClick={onAdd}>Agregar</Button>
+          </Link>
+        </Col>
       </Row>
-      </Container>
-    
+    </Container>
+
   );
 };
 
