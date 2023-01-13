@@ -1,8 +1,8 @@
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import './item.css';
-import Button from 'react-bootstrap/esm/Button';
 import { Link } from 'react-router-dom';
+import NumberFormat from '../Utils/NumberFormat';
 
 const sucu = require.context("../../image", true);
 const Item = ({ item }) => {
@@ -14,7 +14,7 @@ const Item = ({ item }) => {
                     <Card.Img variant="bottom"  className="image-container" src={sucu(`./${item.image}`)} />
                     <Card.Body>
                         <p style={{color:"#28B463"}} className='card-name'>{item.name} 
-                        <br/><strong>GS. {item.price} </strong></p>
+                        <br/><strong><NumberFormat number={item.price}/> </strong></p>
                         
                         {/* <Button variant="secondary" size="sm">Ver Detalle</Button> */}
                     </Card.Body>

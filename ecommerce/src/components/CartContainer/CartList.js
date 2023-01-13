@@ -1,9 +1,9 @@
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { XCircle } from 'react-bootstrap-icons';
 import Button from 'react-bootstrap/esm/Button';
+import NumberFormat from '../Utils/NumberFormat';
 import { CartContext } from '../../context/CartContext';
-import {useContext } from 'react';
+import { useContext } from 'react';
 
 const CartList = ({ items, totalQuantity, totalMount }) => {
     const { removeItem, clear } = useContext(CartContext);
@@ -18,30 +18,37 @@ const CartList = ({ items, totalQuantity, totalMount }) => {
 
     return (
         <div>
-            <h1>Listado de Items</h1>
-            <Row>
+            <h2>Listado de Items</h2>
+            <strong>
+                <Row>
 
-                <Col xs={6}>Articulo </Col>
-                <Col >Precio</Col>
-                <Col>Cantidad</Col>
-                <Col>Total</Col>
-                <Col></Col>
-            </Row>
-            {items.map((item) => (
-                <Row key={item.id}>
-                    <Col xs={6}>{item.name} </Col>
-                    <Col >{item.price} </Col>
-                    <Col>{item.contador}</Col>
-                    <Col>{item.contador * item.price}</Col>
-                    <Col>
-                        <Button variant="dark" value={item.id} onClick={removeItemCard}>
-                            Elminar</Button> </Col>
+                    <Col xs={5}>Articulo </Col>
+                    <Col >Precio</Col>
+                    <Col>Cantidad</Col>
+                    <Col>Total</Col>
+                    <Col></Col>
+
                 </Row>
+            </strong>
+            <hr />
+            {items.map((item) => (
+                <div>
+                    <Row key={item.id}>
+                        <Col xs={5}>{item.name} </Col>
+                        <Col ><NumberFormat number={item.price}/></Col>
+                        <Col>{item.contador}</Col>
+                        <Col><NumberFormat number={item.contador * item.price}/></Col>
+                        <Col>
+                            <Button variant="dark" value={item.id} onClick={removeItemCard} size="sm">
+                                Elminar</Button> </Col>
+                    </Row>
+                    <hr />
+                </div>
             ))
             }
             <br />
-            <p>Cantidad Total de Articulos: {totalQuantity}</p>
-            <p>Monto Total a Pagar: {totalMount}</p>
+            <p>Cantidad Total de Articulos: <strong>{totalQuantity}</strong></p>
+            <p>Monto Total a Pagar: <strong><NumberFormat number={totalMount}/></strong></p>
             <Button variant="dark" onClick={clearCard}>Vaciar Carrito</Button>
         </div>
     );

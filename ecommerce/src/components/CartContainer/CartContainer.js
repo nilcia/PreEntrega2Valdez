@@ -22,7 +22,7 @@ const CartContainer = () => {
                         <Container>
                             <br />
                             <Row className="g-4 justify-content-md-center">
-                                <Col>
+                                <Col xs={8}>
                                     <CartList items={cartItem} totalQuantity={totalQuantity} totalMount={totalMount} />
                                 </Col>
                                 <Col>

@@ -66,9 +66,9 @@ const FormOrder = () => {
   return (
 
     <Form onSubmit={submitHandler}>
-      <h1>Datos del comprador</h1>
+      <h2>Datos del comprador</h2>
       <Form.Group className="mb-3">
-        <Form.Label >Nombre y Apellido *Requerido</Form.Label>
+        <Form.Label ><strong>Nombre y Apellido *Requerido</strong></Form.Label>
         <Form.Control
           placeholder="Ingrese Nombre y Apellido"
           name="name"
@@ -77,7 +77,7 @@ const FormOrder = () => {
           onChange={changeHandler} />
       </Form.Group>
       <Form.Group className="mb-3" >
-        <Form.Label>Correo electronico *Requerido</Form.Label>
+        <Form.Label><strong>Correo electronico *Requerido</strong></Form.Label>
         <Form.Control
           type="email"
           name="email"
@@ -87,7 +87,7 @@ const FormOrder = () => {
           onChange={changeHandler} />
       </Form.Group>
       <Form.Group className="mb-3" >
-        <Form.Label>Telefono *Requerido</Form.Label>
+        <Form.Label><strong>Telefono *Requerido</strong></Form.Label>
         <Form.Control
           placeholder="Ingrese Telefono"
           value={buyerObj.phone}

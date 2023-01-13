@@ -6,6 +6,7 @@ import Row from 'react-bootstrap/Row';
 import Container from "react-bootstrap/Container";
 import './itemDetail.css'
 import { CartContext } from '../../context/CartContext';
+import NumberFormat from '../Utils/NumberFormat';
 
 const sucu = require.context("../../image", true);
 
@@ -38,7 +39,7 @@ const ItemDetail = ({ item }) => {
               <Card.Text>
                 {item.description}
                 <br />
-                <strong>Precio: GS.{item.price} </strong>
+                <strong>Precio: <NumberFormat number={item.price}/></strong>
               </Card.Text>
               <ItemCount stock={item.stock} onClick={buttonOnAdd} isInCart={isInCart} />
             </Card.Body>
