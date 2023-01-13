@@ -5,19 +5,19 @@ import Col from 'react-bootstrap/Col';
 import { CartContext } from '../../context/CartContext';
 import CartList from './CartList';
 import FormOrder from './FormOrder';
+import NewOrder from './NewOrder';
 
 const CartContainer = () => {
     const { cartItem, totalQuantity, totalMount, formId } = useContext(CartContext);
     return <div>
-        {(typeof formId !== 'undefined') && (formId != '') && (cartItem.length === 0 )? (
-            <div>
-                <h1>El pedido fue enviado!!</h1>
-            </div>
+        {(typeof formId !== 'undefined') && (formId != '') && (cartItem.length === 0) ? (
+            <NewOrder description = {'Realizar Nuevo Pedido'}/>
+      
         )
             : (
                 <div>
                     {cartItem.length === 0 ? (
-                        <h1>Su carrito está vacío!!!</h1>
+                        <NewOrder description = {'Su carrito está vacío!!!'}/>
                     ) : (
                         <Container>
                             <br />

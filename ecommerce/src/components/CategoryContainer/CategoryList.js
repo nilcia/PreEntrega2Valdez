@@ -3,8 +3,6 @@ import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 
 const ItemList = ({ items }) => {
-  console.log("Entra a itemslist")
-  console.log(items);
   return (
     <Container>
       <Row xs={1} md={5} className="g-4">

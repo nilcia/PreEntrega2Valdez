@@ -3,8 +3,6 @@ import { getFirestore, collection, addDoc } from 'firebase/firestore';
 import { CartContext } from '../../context/CartContext';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import Alert from 'react-bootstrap/Alert';
-
 
 const FormOrder = () => {
 
@@ -97,7 +95,7 @@ const FormOrder = () => {
           id="phone"
           onChange={changeHandler} />
       </Form.Group>
-      <Button variant="primary" type="submit" disabled={validateForm()}>
+      <Button variant="dark" type="submit" disabled={validateForm()}>
         Realizar Pedido
       </Button>
     </Form>

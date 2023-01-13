@@ -40,15 +40,12 @@ const ItemDetail = ({ item }) => {
                 <br />
                 <strong>Precio: GS.{item.price} </strong>
               </Card.Text>
-
               <ItemCount stock={item.stock} onClick={buttonOnAdd} isInCart={isInCart} />
             </Card.Body>
           </Card>
         </Col>
       </Row>
-
     </Container>
-    // </Link>
   );
 };
 
