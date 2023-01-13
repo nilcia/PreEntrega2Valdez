@@ -11,7 +11,7 @@ const CartContainer = () => {
     const { cartItem, totalQuantity, totalMount, formId } = useContext(CartContext);
     return <div>
         {(typeof formId !== 'undefined') && (formId != '') && (cartItem.length === 0) ? (
-            <NewOrder description = {'Realizar Nuevo Pedido'}/>
+            <NewOrder description = {'Su pedido se realizó de manera exitosa!!!'}/>
       
         )
             : (

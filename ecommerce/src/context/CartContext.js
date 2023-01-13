@@ -8,9 +8,11 @@ const CartProvider = ({ children }) => {
   const [totalMount, setTotalMount] = useState(0);
   const [formId, setFormId] = useState('');
 
+  //Agrega un item al carrito
   const setCart= (item, contador, isInCart) => {
     let id= item.id;
     let filterItem = cartItem.filter(item => item.id === id);
+     //Valida que ya no se haya agregado el item
     if(filterItem.id != id){
       setCartItem([...cartItem, { ...item, contador,isInCart }]);
       setTotalQuantity(totalQuantity + contador)
@@ -22,6 +24,7 @@ const CartProvider = ({ children }) => {
     
   };
 
+   //Elimina un item al carrito y recalcula los valores
   const removeItem = (id) => {
     let updateItems = cartItem.filter(item => item.id !== id);
     if(updateItems.length===0){
@@ -35,12 +38,14 @@ const CartProvider = ({ children }) => {
     setCartItem(updateItems);
   }
 
+   //Vacía el carrito seteando todos los valores a vacios y 0
   const clear = () => {
     setCartItem([]);
     setTotalQuantity(0);
     setTotalMount(0);
   }
 
+  //Si se realizo el pedido, se setean todos los valores a vacios y 0
   useEffect(() => {
     setCartItem([]);
     setTotalQuantity(0);
