@@ -21,7 +21,7 @@ const NavbarMenu = () => {
             </Nav>
             <Nav>
               <Nav.Link href="#cart">
-                <CardWidget /> 2
+                <CardWidget />
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
